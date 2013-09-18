@@ -1,3 +1,14 @@
 .show-off {
   color: rgb(239, 87, 84);
 }
+
+.big-input {
+  padding: 6px 10px;
+  font-size: 18px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.mt {
+  margin-top: 40px !important;
+}
