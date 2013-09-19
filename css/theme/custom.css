@@ -9,6 +9,26 @@
   vertical-align: middle;
 }
 
+.big-button {
+  font-size: 18px;
+  padding: 6px;
+  vertical-align: middle;
+}
+
+.big-checkbox {
+  width: 25px;
+  height: 25px;
+}
+
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
 .mt {
   margin-top: 40px !important;
+}
+
+.no-bullets {
+  list-style: none !important;
 }

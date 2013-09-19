@@ -89,26 +89,139 @@
     <label>Seu nome?</label>
     <input type="text" ng-model="nome" placeholder="Seu nome?">
   </fieldset>
-  <h2>Oi {{ nome }}!</h2>
+  <h2>Meu nome é {{ nome }}!</h2>
           </code></pre>
 
-          <hr>
+          <div class="mt fragment">
+            <hr>
 
-          <div class="mt">
             <!doctype html>
             <html>
               <body>
-                <fieldset>
-                  <label>Seu nome?</label>
-                  <input class="big-input" type="text" ng-model="nome" placeholder="Escreva aqui!">
-                </fieldset>
-                <p class="mt">
-                  <h2>Oi <span class="show-off">{{ nome }}</span>!</h2>
-                </p>
+                <div class="mt" ng-app>
+                  <fieldset>
+                    <label>Seu nome?</label>
+                    <input class="big-input" type="text" ng-model="nome" placeholder="Escreva aqui!">
+                  </fieldset>
+                  <p class="mt">
+                    <h2>Meu nome é <span class="show-off">{{ nome }}</span>!</h2>
+                  </p>
+                </div>
               </body>
             </html>
           </div>
         </section>
+
+        <section>
+          <h1>MVC</h1>
+          Model - View - Controller
+        </section>
+
+        <section>
+          <h2>Model = <span class="show-off">$scope</span></h2>
+          <p><span class="show-off">$scope</span> é um objecto de JavaScript que se refere ao modelo da aplicação. É o que liga o <i>controller</i> e a <i>View</i>.</p>
+
+          <div class="fragment">
+            <p class="mt">
+              myView.html
+            </p>
+            <pre><code>
+              <input type="text" ng-model="foo">
+            </code></pre>
+
+            <p class="mt">
+              myController.js
+            </p>
+            <pre><code>
+              function MyController($scope) {
+                $scope.foo = 'Bar';
+              }
+            </code></pre>
+
+          </div>
+				</section>
+
+        <section>
+          <h2>View</h2>
+          <p>As views no angular são simplesmente <span class="show-off">HTML5</span>.<br/>É onde se faz toda a <i>presentation logic</i> deve estar.</p>
+
+          <div class="fragment mt">
+            <pre><code>
+      <div ng-controller="TodoCtrl">
+        <ul>
+          <li ng-repeat="todo in todos">
+            <input type="checkbox" ng-model="todo.done">
+            <span class="done-{{ todo.done }}">{{ todo.text }}</span>
+          </li>
+        </ul>
+        <form ng-submit="addTodo()">
+          <input type="text" ng-model="todoText">
+          <input type="submit" value="add">
+        </form>
+      </div>
+            </code></pre>
+          </div>
+				</section>
+
+        <section>
+					<h2>Controllers</h2>
+          <p>Um controller é uma função usada para 'aumentar' a instância do <span class="show-off">$scope</span>. Para adicionar um valor inicial ou um comportamento para um objecto do <span class="show-off">$scope</span>.</p>
+          <pre class="mt fragment"><code>
+    function TodoCtrl($scope) {
+      $scope.todos = [
+        { text: 'Aprender AngularJS', done: true },
+        { text: 'Criar um novo App', done: false }
+      ];
+
+      $scope.addTodo = function() {
+        if ($scope.todoText) {
+          $scope.todos.push({ text: $scope.todoText, done: false });
+          $scope.todoText = '';
+        }
+      };
+    };
+          </code></pre>
+				</section>
+
+        <section>
+          <h2>Resultado</h2>
+
+          <!doctype html>
+          <html ng-app>
+            <body>
+              <script>
+                function TodoCtrl($scope) {
+                  $scope.todos = [
+                    { text: 'Aprender AngularJS', done: true },
+                    { text: 'Criar um novo App', done: false }
+                  ];
+
+                  $scope.addTodo = function() {
+                    if ($scope.todoText) {
+                      $scope.todos.push({ text: $scope.todoText, done: false });
+                      $scope.todoText = '';
+                    }
+                  };
+                };
+              </script>
+
+              <div class="mt" ng-controller="TodoCtrl">
+                <ul class="no-bullets">
+                  <li ng-repeat="todo in todos">
+                    <label>
+                      <input type="checkbox" ng-model="todo.done" class="big-checkbox">
+                      <span class="done-{{ todo.done }}">{{ todo.text }}</span>
+                    </label>
+                  </li>
+                </ul>
+                <form class="mt" ng-submit="addTodo()">
+                  <input placeholder="add new task" class="big-input" type="text" ng-model="todoText">
+                  <button class="big-button" type="submit">Add</button>
+                </form>
+              </div>
+            </body>
+          </html>
+				</section>
 
         <section>
           <h2>Referencias</h2>
