@@ -49,9 +49,10 @@
 				</section>
 
         <section>
-          <h2>O que é o <span class="show-off">ANgularJS</span></h2>
-          <p>Um framework para criar aplicações web, de maneira rápida, testável e de fácil manutenção.</p>
+          <h2>O que é o <span class="show-off">AngularJS</span></h2>
+          <p>Um framework para criar aplicações web dinâmicas, de maneira rápida, testável e de fácil manutenção.</p>
         </section>
+
         <section>
           <h2>Princípios do <span class="show-off">AngularJS</span></h2>
           <ul>
@@ -66,67 +67,59 @@
           <h2>O que o <span class="show-off">AngularJS</span> oferece</h2>
           <ul>
             <li class="fragment">Controllers</li>
-            <li class="fragment">Templates e Data bindings</li>
+            <li class="fragment">Templates</li>
+            <li class="fragment">Two-Way data bindings</li>
             <li class="fragment">Services</li>
             <li class="fragment">Directives</li>
             <li class="fragment">Integração com REST</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>O que o <span class="show-off">AngularJS</span> oferece <small>parte 2</small></h2>
-          <ul>
             <li class="fragment">Injeção de dependencias</li>
             <li class="fragment">Transições (em CSS3)</li>
-            <li class="fragment">Filtros</li>
           </ul>
         </section>
 
         <section>
-          <h2>Exemplo simples</h2>
-          <pre><code>
-  <fieldset>
-    <label>Seu nome?</label>
-    <input type="text" ng-model="nome" placeholder="Seu nome?">
-  </fieldset>
-  <h2>Meu nome é {{ nome }}!</h2>
+          <h2>Um exemplo bem simples</h2>
+          <pre ng-non-bindable><code>
+      &lt;!doctype html&gt;
+      &lt;html ng-app&gt;
+        &lt;head&gt;
+          &lt;script src="../js/angular.min.js"&gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          &lt;form&gt;
+            &lt;label&gt;Seu nome?&lt;/label&gt;
+            &lt;input type="text" ng-model="name" placeholder="Seu nome?"&gt;
+          &lt;/form&gt;
+          &lt;h3&gt;Meu nome é {{ name }}!&lt;/h3&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
           </code></pre>
 
           <div class="mt fragment">
             <hr>
-
             <!doctype html>
-            <html>
-              <body>
-                <div class="mt" ng-app>
-                  <fieldset>
-                    <label>Seu nome?</label>
-                    <input class="big-input" type="text" ng-model="nome" placeholder="Escreva aqui!">
-                  </fieldset>
-                  <p class="mt">
-                    <h2>Meu nome é <span class="show-off">{{ nome }}</span>!</h2>
-                  </p>
-                </div>
+            <html ng-app>
+              <body class="mt">
+                <form>
+                  <label>Seu nome?</label>
+                  <input class="big-input" type="text" ng-model="name" placeholder="Escreva aqui!">
+                </form>
+                <h3 class="mt">Meu nome é <span class="show-off">{{ name }}</span>!</h3>
               </body>
             </html>
           </div>
         </section>
 
         <section>
-          <h1>MVC</h1>
-          Model - View - Controller
-        </section>
-
-        <section>
-          <h2>Model = <span class="show-off">$scope</span></h2>
-          <p><span class="show-off">$scope</span> é um objecto de JavaScript que se refere ao modelo da aplicação. É o que liga o <i>controller</i> e a <i>View</i>.</p>
+          <h2>Model</h2>
+          <p>O modelo da aplicação é representado pelo objeto <span class="show-off">$scope</span>,<br/> ele que liga a <i>View</i> e o <i>Controller</i>.</p>
 
           <div class="fragment">
             <p class="mt">
               myView.html
             </p>
-            <pre><code>
-              <input type="text" ng-model="foo">
+            <pre ng-non-bindable><code>
+              <input type="text" ng-model="name">
             </code></pre>
 
             <p class="mt">
@@ -134,7 +127,7 @@
             </p>
             <pre><code>
               function MyController($scope) {
-                $scope.foo = 'Bar';
+                $scope.name = 'Vitor Leal';
               }
             </code></pre>
 
@@ -142,31 +135,9 @@
 				</section>
 
         <section>
-          <h2>View</h2>
-          <p>As views no angular são simplesmente <span class="show-off">HTML5</span>.<br/>É onde se faz toda a <i>presentation logic</i> deve estar.</p>
-
-          <div class="fragment mt">
-            <pre><code>
-      <div ng-controller="TodoCtrl">
-        <ul>
-          <li ng-repeat="todo in todos">
-            <input type="checkbox" ng-model="todo.done">
-            <span class="done-{{ todo.done }}">{{ todo.text }}</span>
-          </li>
-        </ul>
-        <form ng-submit="addTodo()">
-          <input type="text" ng-model="todoText">
-          <input type="submit" value="add">
-        </form>
-      </div>
-            </code></pre>
-          </div>
-				</section>
-
-        <section>
 					<h2>Controllers</h2>
-          <p>Um controller é uma função usada para 'aumentar' a instância do <span class="show-off">$scope</span>. Para adicionar um valor inicial ou um comportamento para um objecto do <span class="show-off">$scope</span>.</p>
-          <pre class="mt fragment"><code>
+          <p>São funções usadas para "aumentar" a instância do <span class="show-off">$scope</span>. Adicionando um valor ou um comportamento a um objeto.</p>
+          <pre ng-non-bindable class="mt fragment"><code>
     function TodoCtrl($scope) {
       $scope.todos = [
         { text: 'Aprender AngularJS', done: true },
@@ -181,6 +152,28 @@
       };
     };
           </code></pre>
+				</section>
+
+        <section>
+          <h2>Views</h2>
+          <p>As views no angular são simplesmente <span class="show-off">HTML5</span>.<br/>É onde toda a <i>presentation logic</i> deve estar.</p>
+
+          <div class="fragment mt">
+            <pre ng-non-bindable><code>
+      &lt;div ng-controller="TodoCtrl"&gt;
+        &lt;ul&gt;
+          &lt;li ng-repeat="todo in todos"&gt;
+            &lt;input type="checkbox" ng-model="todo.done"&gt;
+            &lt;span class="done-{{ todo.done }}"&gt;{{ todo.text }}&lt;/span&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;form ng-submit="addTodo()"&gt;
+          &lt;input type="text" ng-model="todoText"&gt;
+          &lt;button type="submit"&gt;Add&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+            </code></pre>
+          </div>
 				</section>
 
         <section>
@@ -222,6 +215,13 @@
             </body>
           </html>
 				</section>
+
+        <section>
+          <h2>Two-Way data binding</h2>
+          <p>Data binding no angular funciona de maneira bi-directional, qualquer alteração na View se reflete no modelo e vice-versa.</p>
+				  <img class="fragment img" src="examples/assets/One_Way_Data_Binding.png">
+				  <img class="fragment img" src="examples/assets/Two_Way_Data_Binding.png">
+        </section>
 
         <section>
           <h2>Referencias</h2>
@@ -269,6 +269,5 @@
 				]
 			});
 		</script>
-
 	</body>
 </html>
