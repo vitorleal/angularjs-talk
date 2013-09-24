@@ -227,6 +227,69 @@
         </section>
 
         <section>
+          <section>
+            <h2>Herança de <span class="show-off">$scope</span></h2>
+            <p>Se na sua <i>View</i> você declarar um <i>controller</i> dentro de outro,<br/>o <span class="show-off">$scope</span> do <i>controller</i> pai é herdado pelo <i>controller</i> filho.</p>
+            <div class="fragment">
+              <p class="mt">MyControllers.js</p>
+              <pre ng-non-bindable><code>
+    function ParentController($scope) {
+      $scope.preson = { name: 'Vitor Leal', helloText: ''};
+    };
+
+    function ChildController($scope) {
+      $scope.sayHello = function() {
+        $scope.preson.helloText = "Hi " + $scope.preson.name;
+      }
+    };
+              </code></pre>
+            </div>
+          </section>
+
+          <section>
+            <h2>Herança de <span class="show-off">$scope</span> <small>2</small></h2>
+            <p class="mt">MyView.html</p>
+            <pre ng-non-bindable><code>
+    &lt;div ng-controller="ParentController"&gt;
+      &lt;form ng-controller="ChildController"&gt;
+        &lt;input type="text" ng-model="person.name" placeholder="Name"&gt;
+        &lt;button ng-click="sayHello()"&gt;Say hello&lt;/button&gt;
+      &lt;/form&gt;
+      &lt;p&gt;{{ preson.helloText }}&lt;/p&gt;
+    &lt;/div&gt;
+            </code></pre>
+
+            <div class="fragment mt">
+              <!doctype html>
+              <html ng-app>
+                <head>
+                  <script>
+                    function ParentController($scope) {
+                      $scope.preson = { name: 'Vitor Leal', helloText: ''};
+                    };
+
+                    function ChildController($scope) {
+                      $scope.sayHello = function() {
+                        $scope.preson.helloText = "Hi " + $scope.preson.name;
+                      }
+                    };
+                  </script>
+                </head>
+                <body>
+                  <div ng-controller="ParentController">
+                    <form ng-controller="ChildController">
+                      <input class="big-input" type="text" ng-model="preson.name" placeholder="Name"></input>
+                      <button class="big-button" ng-click="sayHello()">Say hello</button>
+                    </form>
+                    <p class="mt">{{ preson.helloText }}</p>
+                  </div>
+                </body>
+              </html>
+            </div>
+          </section>
+        </section>
+
+        <section>
           <h2>Referencias</h2>
           <ul>
             <li>
