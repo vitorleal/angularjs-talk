@@ -295,6 +295,95 @@
         </section>
 
         <section>
+          <h2>Services</h2>
+          <p>São objectos que executam tasks específicas e que são controlados pela injeção de depêndencias.</p>
+          <ul class="mt fragment">
+            <li>$http (ajax)</li>
+            <li>$locale</li>
+            <li>$timeout</li>
+            <li>$filter</li>
+          </ul>
+				</section>
+
+        <section>
+          <h2>$http</h2>
+          <p>O <i>service</i> <span class="show-off">$http</span> facilita a comunicação com servidores e APIs</p>
+          <p>Métodods disponíveis: .get, .post, .put, .delete, .head, .jsonp</p>
+          <pre class="mt" ng-non-bindable><code>
+    $http.get('http://endereco.da/api')
+      .success(successCallback)
+      .error(errorCallback);
+
+    $http.post('http://endereco.da/api', data)
+      .success(successCallback)
+      .error(errorCallback);
+          </code></pre>
+				</section>
+
+        <section>
+          <h3>$http - exemplo</h3>
+          <pre ng-non-bindable><code>
+    function BeerController($scope, $http) {
+      $scope.makeRequest = function () {
+        $http.jsonp('http://api.openbeerdatabase.com/v1/beers.json')
+          .success(function(data, status) {
+            $scope.beers = data.beers;
+          })
+          .error(function() {
+            $scope.beers = [{ name: "No beer for you :(", brewery: { name: "" } }]
+          });
+      };
+    };
+          </code></pre>
+          <pre ng-non-bindable><code>
+    &lt;div ng-controller="BeerController"&gt;
+      &lt;ul&gt;
+        &lt;li ng-repeat="beer in beers | limitTo:5"&gt;
+          {{ beer.name }} - {{ beer.brewery.name }}
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;button ng-click="makeRequest()"&gt;Get beers&lt;/button&gt;
+    &lt;/div&gt;
+          </code></pre>
+				</section>
+
+        <section>
+          <h2>$http - exemplo <small>2</small></h2>
+
+          <div class="mt">
+            <!doctype html>
+            <html ng-app>
+              <body>
+                <script>
+                  function BeersController($scope, $http) {
+                    $scope.makeRequest = function () {
+                      $http.jsonp('http://api.openbeerdatabase.com/v1/beers.json?callback=JSON_CALLBACK')
+                        .success(function(data, status) {
+                            $scope.beers = data.beers;
+                        })
+                        .error(function() {
+                          $scope.beers = [{ name: "No beer for you :(", brewery: { name: "" } }]
+                        });
+                    };
+                  };
+                </script>
+                <div ng-controller="BeersController">
+                  <ul>
+                    <li ng-repeat="beer in beers | limitTo:5">
+                    {{ beer.name }} <small>{{ beer.brewery.name }}</small>
+                    </li>
+                  </ul>
+                  <p class="mt">
+                    <button class="big-button" ng-click="makeRequest()">Get beers</button>
+                  </p>
+                </div>
+              </body>
+            </html>
+          </div>
+				</section>
+
+
+        <section>
           <h2>Directives</h2>
           <blockquote>"Ensine novos truques ao HTML"</blockquote>
           <ol class="mt fragment">
@@ -345,7 +434,7 @@
               <strong>elemento</strong>: <span class="show-off">&lt;my-dir>&lt;/my-dir&gt;</span>
             </li>
             <li class="mt">
-            <strong>atributo</strong>: <span class="show-off">&lt;span my-dir="exp"&gt;&lt;/span&gt;<span class="show-off">
+              <strong>atributo</strong>: <span class="show-off">&lt;span my-dir="exp"&gt;&lt;/span&gt;<span class="show-off">
             </li>
             <li class="mt">
               <strong>class</strong>: <span class="show-off">&lt;span class="my-dir: exp;"&gt;&lt;/span&gt;<span class="show-off">
