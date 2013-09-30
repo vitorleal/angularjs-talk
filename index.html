@@ -94,7 +94,7 @@
       &lt;/html&gt;
           </code></pre>
 
-          <div class="mt fragment">
+          <div class="hide-in-print mt fragment">
             <hr>
             <!doctype html>
             <html ng-app>
@@ -346,7 +346,7 @@
 				</section>
 
         <section>
-          <h2>$http - exemplo <small>2</small></h2>
+          <h2>$http - Resultado</h2>
 
           <div class="mt">
             <!doctype html>
@@ -360,7 +360,7 @@
                             $scope.beers = data.beers;
                         })
                         .error(function() {
-                          $scope.beers = [{ name: "No beer for you :(", brewery: { name: "" } }]
+                          $scope.beers = [{ name: "No beer for you :(" }]
                         });
                     };
                   };
@@ -380,6 +380,48 @@
             </html>
           </div>
 				</section>
+
+        <section>
+          <h2>Modules</h2>
+          <p>No angular voce utiliza o <i class="show-off">"module"</i> para especificar <br>como um aplicativo deve ser inicializado.</p>
+
+          <pre class="mt" ng-non-bindable><code>
+    var app = angular.module('myApp', ['third-part-module']);
+
+    app.config(function() { ... });      <!-- Configurações de rotas -->
+    app.controller('myController', ...); <!-- Criando um controller -->
+    app.service('myService', ...);       <!-- Criando um service  -->
+          </code></pre>
+
+          <pre class="mt" ng-non-bindable><code>
+    &lt;html ng-app="myApp"&gt;
+      ...
+    &lt;/html&gt;
+          </code></pre>
+				</section>
+
+        <section>
+					<h2>Routes</h2>
+          <p>Em apps mais complexos utilize o <i class="show-off">$routeProvider</i> do angular, para definir qual <i>controller</i> e <i>template</i> deve ser utilizdo para cada <i>path</i>.</p>
+          <pre class="fragment" ng-non-bindable><code>
+  var app = angular.module('myApp');
+
+  app.config(function($routeProvider) {
+    $routeProvider
+      .when('/', {
+        controller :'mainController', templateUrl :'/views/index.html'
+      })
+      .when('/newPost/', {
+        controller :'newPostController', templateUrl :'/views/newPost.html'
+      })
+      .when('/posts/:id', {
+        controller :'postsController', templateUrl :'/views/posts.html'
+      })
+      .otherwise({ redirectTo : '/' });
+    });
+          </code></pre>
+				</section>
+
 
         <section>
           <h2>Directives</h2>
@@ -452,41 +494,18 @@
       return {
         restrict: 'EA',
         link: function($scope, element) {
-            element.text('Text from directive');
+          element.text('Text from directive');
         }
       };
     });
           </code></pre>
 
           <pre ng-non-bindable><code>
-    &lt;my-dir&gt;&lt;/my-dir&gt; <!-- Directive como um elemento -->
+    &lt;my-dir&gt;&lt;/my-dir&gt;  <!-- Directive como um elemento -->
 
-    &lt;div my-dir&gt;&lt;/div&gt;  <!-- Directive como um atributo -->
+    &lt;div my-dir&gt;&lt;/div&gt; <!-- Directive como um atributo -->
           </code></pre>
         </section>
-
-        <section>
-					<h2>Routes</h2>
-          <p>Em apps mais complexos utilize o <i class="show-off">$routeProvider</i> do angular, para definir qual <i>controller</i> e <i>template</i> deve ser utilizdo para cada <i>path</i>.</p>
-          <pre class="fragment" ng-non-bindable><code>
-  var app = angular.module('myApp');
-
-  app.config(function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        controller :'mainController', templateUrl :'/views/index.html'
-      })
-      .when('/newPost/', {
-        controller :'newPostController', templateUrl :'/views/newPost.html'
-      })
-      .when('/posts/:id', {
-        controller :'postsController', templateUrl :'/views/posts.html'
-      })
-      .otherwise({ redirectTo : '/' });
-    });
-          </code></pre>
-				</section>
-
 
         <section>
 					<h1>Fim</h1>

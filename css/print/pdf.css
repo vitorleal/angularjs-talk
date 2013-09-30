@@ -45,7 +45,8 @@ html {
 .reveal.overview,
 .fork-reveal,
 .share-reveal,
-.state-background {
+.state-background,
+.hide-in-print {
 	display: none !important;
 }
 
