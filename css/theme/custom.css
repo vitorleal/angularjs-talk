@@ -43,3 +43,7 @@
 .beer-brewery {
   font-size: .5em !important;
 }
+
+.img {
+  vertical-align: middle !important;
+}
