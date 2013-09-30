@@ -32,3 +32,14 @@
 .no-bullets {
   list-style: none !important;
 }
+
+.beer-list {
+  height: 199px;
+  overflow: auto;
+  font-size: .8em !important;
+  text-align: center !important;
+}
+
+.beer-brewery {
+  font-size: .5em !important;
+}

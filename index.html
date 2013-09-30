@@ -55,25 +55,24 @@
 
         <section>
           <h2>Princípios do <span class="show-off">AngularJS</span></h2>
-          <ul>
-            <li class="fragment">Desenvolvimento Rápido</li>
-            <li class="fragment">Escrever menos código</li>
-            <li class="fragment">Modularidade</li>
-            <li class="fragment">Pensado para ser testado</li>
+          <ul class="fragment">
+            <li>Desenvolvimento Rápido</li>
+            <li>Escrever menos código</li>
+            <li>Modularidade</li>
+            <li>Pensado para ser testado</li>
           </ul>
         </section>
 
         <section>
           <h2>O que o <span class="show-off">AngularJS</span> oferece</h2>
-          <ul>
-            <li class="fragment">Controllers</li>
-            <li class="fragment">Templates</li>
-            <li class="fragment">Two-Way data bindings</li>
-            <li class="fragment">Services</li>
-            <li class="fragment">Directives</li>
-            <li class="fragment">Integração com REST</li>
-            <li class="fragment">Injeção de dependencias</li>
-            <li class="fragment">Transições (em CSS3)</li>
+          <ul class="fragment">
+            <li>Controllers</li>
+            <li>Templates</li>
+            <li>Two-Way data bindings</li>
+            <li>Services</li>
+            <li>Directives</li>
+            <li>Integração com REST</li>
+            <li>Injeção de dependencias</li>
           </ul>
         </section>
 
@@ -83,7 +82,7 @@
       &lt;!doctype html&gt;
       &lt;html ng-app&gt;
         &lt;head&gt;
-          &lt;script src="./js/angular.min.js"&gt;&lt;/script&gt;
+          &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
         &lt;/head&gt;
         &lt;body&gt;
           &lt;form&gt;
@@ -119,18 +118,18 @@
               myView.html
             </p>
             <pre ng-non-bindable><code>
-              <form ng-controller="MyController">
-                <input type="text" ng-model="name">
-              </form>
+  &lt;form ng-controller="MyController"&gt;
+    &lt;input type="text" ng-model="name"&gt;
+  &lt;/form&gt;
             </code></pre>
 
             <p class="mt">
               myController.js
             </p>
             <pre><code>
-              function MyController($scope) {
-                $scope.name = 'Vitor Leal';
-              }
+  function MyController($scope) {
+    $scope.name = 'Vitor Leal';
+  }
             </code></pre>
 
           </div>
@@ -228,7 +227,7 @@
 
         <section>
           <h2>Herança de <span class="show-off">$scope</span></h2>
-          <p>Se na sua <i>View</i> você declarar um <i>controller</i> dentro de outro,<br/>o <span class="show-off">$scope</span> do <i>controller</i> pai é herdado pelo <i>controller</i> filho.</p>
+          <p>Quando você declarar um <i>controller</i> dentro de outro na sua <i>View</i> ,<br/>o <span class="show-off">$scope</span> do <i>controller</i> pai é herdado pelo <i>controller</i> filho.</p>
           <div class="fragment">
             <p class="mt">MyControllers.js</p>
             <pre ng-non-bindable><code>
@@ -286,8 +285,7 @@
                     <input class="big-input" type="text" ng-model="person.name" placeholder="Name"></input>
                     <button class="big-button" ng-click="sayHello()">Say hello</button>
                   </form>
-                  <p class="mt">Name = {{ person.name }}</p>
-                  <p class="mt">heloText = {{ person.helloText }}</p</p>
+                  <p class="mt">preson.helloText = <span class="show-off">{{ person.helloText }}</span></p>
                 </div>
               </body>
             </html>
@@ -308,7 +306,7 @@
         <section>
           <h2>$http</h2>
           <p>O <i>service</i> <span class="show-off">$http</span> facilita a comunicação com servidores e APIs</p>
-          <p>Métodods disponíveis: .get, .post, .put, .delete, .head, .jsonp</p>
+          <p>Principais métodods: .get, .post, .put, .delete, .jsonp</p>
           <pre class="mt" ng-non-bindable><code>
     $http.get('http://endereco.da/api')
       .success(successCallback)
@@ -330,7 +328,7 @@
             $scope.beers = data.beers;
           })
           .error(function() {
-            $scope.beers = [{ name: "No beer for you :(", brewery: { name: "" } }]
+            $scope.beers = [{ name: "No beer for you :(" }]
           });
       };
     };
@@ -338,7 +336,7 @@
           <pre ng-non-bindable><code>
     &lt;div ng-controller="BeerController"&gt;
       &lt;ul&gt;
-        &lt;li ng-repeat="beer in beers | limitTo:5"&gt;
+        &lt;li ng-repeat="beer in beers | limitTo:15"&gt;
           {{ beer.name }} - {{ beer.brewery.name }}
         &lt;/li&gt;
       &lt;/ul&gt;
@@ -368,9 +366,10 @@
                   };
                 </script>
                 <div ng-controller="BeersController">
-                  <ul>
-                    <li ng-repeat="beer in beers | limitTo:5">
-                    {{ beer.name }} <small>{{ beer.brewery.name }}</small>
+                  <ul class="beer-list">
+                    <li ng-repeat="beer in beers | limitTo:15">
+                      <span class="show-off">{{ beer.name }}</span>
+                      <span class="beer-brewery">{{ beer.brewery.name }}</span>
                     </li>
                   </ul>
                   <p class="mt">
@@ -447,37 +446,41 @@
         <section>
           <h2>Directives <small>5</small></h2>
           <pre ng-non-bindable><code>
-    var app = angular.module('myApp', []);
+    var app = angular.module('myApp');
 
     app.directive('myDir', function() {
-        return {
-          restrict: 'EAC',
-          link: function($scope, element, attrs, controller) {
-            var controllerOptions, options;
-            element.text('');
-          }
-        };
-      }
-    );
+      return {
+        restrict: 'EA',
+        link: function($scope, element) {
+            element.text('Text from directive');
+        }
+      };
+    });
+          </code></pre>
+
+          <pre ng-non-bindable><code>
+    &lt;my-dir&gt;&lt;/my-dir&gt; <!-- Directive como um elemento -->
+
+    &lt;div my-dir&gt;&lt;/div&gt;  <!-- Directive como um atributo -->
           </code></pre>
         </section>
 
         <section>
 					<h2>Routes</h2>
           <p>Em apps mais complexos utilize o <i class="show-off">$routeProvider</i> do angular, para definir qual <i>controller</i> e <i>template</i> deve ser utilizdo para cada <i>path</i>.</p>
-          <pre ng-non-bindable><code>
-  var app = angular.module('myApp', []);
+          <pre class="fragment" ng-non-bindable><code>
+  var app = angular.module('myApp');
 
-  app.config(function ($routeProvider) {
+  app.config(function($routeProvider) {
     $routeProvider
       .when('/', {
-        controller : 'mainController', templateUrl : '/view/index.html'
+        controller :'mainController', templateUrl :'/views/index.html'
       })
       .when('/newPost/', {
-        controller : 'newPostController', templateUrl : '/view/newPost.html'
+        controller :'newPostController', templateUrl :'/views/newPost.html'
       })
       .when('/posts/:id', {
-        controller : 'postsController', templateUrl : '/view/posts.html'
+        controller :'postsController', templateUrl :'/views/posts.html'
       })
       .otherwise({ redirectTo : '/' });
     });
