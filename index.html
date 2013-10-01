@@ -115,15 +115,6 @@
 
           <div class="fragment">
             <p class="mt">
-              myView.html
-            </p>
-            <pre ng-non-bindable><code>
-  &lt;form ng-controller="MyController"&gt;
-    &lt;input type="text" ng-model="name"&gt;
-  &lt;/form&gt;
-            </code></pre>
-
-            <p class="mt">
               myController.js
             </p>
             <pre><code>
@@ -132,6 +123,14 @@
   }
             </code></pre>
 
+            <p class="mt">
+              myView.html
+            </p>
+            <pre ng-non-bindable><code>
+  &lt;form ng-controller="MyController"&gt;
+    &lt;input type="text" ng-model="name"&gt;
+  &lt;/form&gt;
+            </code></pre>
           </div>
 				</section>
 
@@ -145,11 +144,9 @@
         { text: 'Criar um novo App', done: false }
       ];
 
-      $scope.addTodo = function() {
-        if ($scope.todoText) {
-          $scope.todos.push({ text: $scope.todoText, done: false });
-          $scope.todoText = '';
-        }
+      $scope.addTodo = function () {
+        $scope.todos.push({ text: $scope.todoText, done: false });
+        $scope.todoText = '';
       };
     };
           </code></pre>
@@ -165,7 +162,7 @@
         &lt;ul&gt;
           &lt;li ng-repeat="todo in todos"&gt;
             &lt;input type="checkbox" ng-model="todo.done"&gt;
-            &lt;span class="done-{{ todo.done }}"&gt;{{ todo.text }}&lt;/span&gt;
+            &lt;span&gt;{{ todo.text }}&lt;/span&gt;
           &lt;/li&gt;
         &lt;/ul&gt;
         &lt;form ng-submit="addTodo()"&gt;
@@ -190,7 +187,7 @@
                     { text: 'Criar um novo App', done: false }
                   ];
 
-                  $scope.addTodo = function() {
+                  $scope.addTodo = function () {
                     if ($scope.todoText) {
                       $scope.todos.push({ text: $scope.todoText, done: false });
                       $scope.todoText = '';
@@ -220,7 +217,7 @@
 
         <section>
           <h2>Two-Way data binding</h2>
-          <p>Data binding no angular funciona de maneira bi-direcional, qualquer alteração na View se reflete no modelo e vice-versa.</p>
+          <p>Data binding no angular funciona de maneira bi-direcional, qualquer alteração na <i>View</i> se reflete no <i>Model</i> e vice-versa.</p>
 				  <img class="fragment img" src="examples/assets/One_Way_Data_Binding.png">
 				  <img class="fragment img" src="examples/assets/Two_Way_Data_Binding.png">
         </section>
@@ -233,13 +230,13 @@
             <pre ng-non-bindable><code>
   function ParentController($scope) {
     $scope.person = {
-      name: 'Vitor Leal',
+      name     : 'Vitor Leal',
       helloText: ''
     };
   };
 
   function ChildController($scope) {
-    $scope.sayHello = function() {
+    $scope.sayHello = function () {
       $scope.person.helloText = "Hi " + $scope.person.name;
     }
   };
@@ -273,7 +270,7 @@
                   };
 
                   function ChildController($scope) {
-                    $scope.sayHello = function() {
+                    $scope.sayHello = function () {
                       $scope.person.helloText = "Hi " + $scope.person.name;
                     }
                   };
@@ -305,7 +302,7 @@
 
         <section>
           <h2>$http</h2>
-          <p>O <i>service</i> <span class="show-off">$http</span> facilita a comunicação com servidores e APIs</p>
+          <p>O <i>service</i> <span class="show-off">$http</span> facilita a comunicação com APIs.</p>
           <p>Principais métodods: .get, .post, .put, .delete, .jsonp</p>
           <pre class="mt" ng-non-bindable><code>
     $http.get('http://endereco.da/api')
@@ -324,10 +321,10 @@
     function BeerController($scope, $http) {
       $scope.makeRequest = function () {
         $http.jsonp('http://api.openbeerdatabase.com/v1/beers.json')
-          .success(function(data, status) {
+          .success(function (data, status) {
             $scope.beers = data.beers;
           })
-          .error(function() {
+          .error(function () {
             $scope.beers = [{ name: "No beer for you :(" }]
           });
       };
@@ -356,10 +353,10 @@
                   function BeersController($scope, $http) {
                     $scope.makeRequest = function () {
                       $http.jsonp('http://api.openbeerdatabase.com/v1/beers.json?callback=JSON_CALLBACK')
-                        .success(function(data, status) {
+                        .success(function (data, status) {
                             $scope.beers = data.beers;
                         })
-                        .error(function() {
+                        .error(function () {
                           $scope.beers = [{ name: "No beer for you :(" }]
                         });
                     };
@@ -388,7 +385,7 @@
           <pre class="mt" ng-non-bindable><code>
     var app = angular.module('myApp', ['third-part-module']);
 
-    app.config(function() { ... });      <!-- Configurações de rotas -->
+    app.config(function () { ... });     <!-- Configurações -->
     app.controller('myController', ...); <!-- Criando um controller -->
     app.service('myService', ...);       <!-- Criando um service -->
           </code></pre>
@@ -406,7 +403,7 @@
           <pre class="fragment" ng-non-bindable><code>
   var app = angular.module('myApp');
 
-  app.config(function($routeProvider) {
+  app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         controller :'mainController', templateUrl :'/views/index.html'
@@ -471,16 +468,16 @@
           <p>Você pode criar sua própria <i>directive</i>.</p>
           <ul class="mt fragment">
             <li>
-              <strong>elemento</strong>: <span class="show-off">&lt;my-dir>&lt;/my-dir&gt;</span>
+              <strong>elemento</strong>: <span class="show-off">&lt;my-directive>&lt;/my-directive&gt;</span>
             </li>
             <li class="mt">
-              <strong>atributo</strong>: <span class="show-off">&lt;span my-dir="exp"&gt;&lt;/span&gt;<span class="show-off">
+              <strong>atributo</strong>: <span class="show-off">&lt;span my-directive="value"&gt;&lt;/span&gt;<span class="show-off">
             </li>
             <li class="mt">
-              <strong>class</strong>: <span class="show-off">&lt;span class="my-dir: exp;"&gt;&lt;/span&gt;<span class="show-off">
+              <strong>class</strong>: <span class="show-off">&lt;span class="my-directive: value;"&gt;&lt;/span&gt;<span class="show-off">
             </li>
             <li class="mt">
-              <strong>comentário</strong>: <span class="show-off">&lt;!-- directive: my-dir exp --&gt;<span class="show-off">
+              <strong>comentário</strong>: <span class="show-off">&lt;!-- directive: my-directive value --&gt;<span class="show-off">
             </li>
           </ul>
 				</section>
@@ -490,10 +487,10 @@
           <pre ng-non-bindable><code>
     var app = angular.module('myApp');
 
-    app.directive('myDir', function() {
+    app.directive('myDirective', function () {
       return {
         restrict: 'EA',
-        link: function($scope, element) {
+        link: function ($scope, element) {
           element.text('Text from directive');
         }
       };
@@ -501,10 +498,75 @@
           </code></pre>
 
           <pre ng-non-bindable><code>
-    &lt;my-dir&gt;&lt;/my-dir&gt;  <!-- Directive como um elemento -->
+    &lt;my-directive&gt; &lt;/my-directive&gt;  <!-- Directive como um elemento -->
 
-    &lt;div my-dir&gt;&lt;/div&gt; <!-- Directive como um atributo -->
+    &lt;div my-directive&gt; &lt;/div&gt;       <!-- Directive como um atributo -->
           </code></pre>
+        </section>
+
+        <section>
+          <h2>Directives <small>6</small></h2>
+          <pre ng-non-bindable><code>
+    var app = angular.module('myApp');
+
+    app.directive('myDirective', function () {
+      return {
+        restrict: 'E',
+        replace:  true,
+        template: '<h1 class="title"></h1>'
+        link: function ($scope, element) {
+          element.text('Text from directive');
+        }
+      };
+    });
+          </code></pre>
+
+          <pre ng-non-bindable><code>
+    &lt;my-directive&gt; &lt;/my-directive&gt;             <!-- Nossa tag customizada -->
+
+    &lt;h1 class="title"&gt;Text from directive&lt;/h1&gt; <!-- Se converte no template -->
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Testando seu App</h2>
+          <p>Um framework criado com o intuito de ser facilemnte testado</p>
+          <div class="fragment mt">
+            <h4>Ferramentas recomendadas:</h4>
+            <ul class="mt">
+              <li><span class="show-off">Karma</span> <small>Test runner</small></li>
+              <li><span class="show-off">Jasmine</span> <small>Test framework</small></li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <h2>Testando Controllers</h2>
+          <pre ng-non-bindable><code>
+  describe('Testing Controller', function () {
+    var ctrl, scope;
+
+    beforeEach(angular.mock.module('myApp'));
+
+    beforeEach(inject(function ($controller, $rootScope) {
+      scope = $rootScope.$new();
+      ctrl  = $controller('myController', { $scope: scope });
+    }));
+
+    it('should exist a controller called myController ', function() {
+      expect(scope).not.toBeUndefined();
+    });
+  });
+          </code></pre>
+        </section>
+
+        <section>
+					<h2>Referências</h2>
+          <ul>
+            <li>Angular - <a href="http://angularjs.org/" target="_blank">http://angularjs.org/</a></li>
+            <li>Karma   - <a href="http://karma-runner.github.io/" target="_blank">http://karma-runner.github.io/</a></li>
+            <li>Jasmine - <a href="http://pivotal.github.io/jasmine/" target="_blank">http://pivotal.github.io/jasmine/</a></li>
+          </ul>
         </section>
 
         <section>
