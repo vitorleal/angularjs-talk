@@ -56,7 +56,7 @@
         <section>
           <h2>Princípios do <span class="show-off">AngularJS</span></h2>
           <ul class="fragment">
-            <li>Desenvolvimento Rápido</li>
+            <li>Desenvolvimento rápido</li>
             <li>Escrever menos código</li>
             <li>Modularidade</li>
             <li>Pensado para ser testado</li>
@@ -72,26 +72,26 @@
             <li>Services</li>
             <li>Directives</li>
             <li>Integração com REST</li>
-            <li>Injeção de dependencias</li>
+            <li>Injeção de dependências</li>
           </ul>
         </section>
 
         <section>
           <h2>Um exemplo bem simples</h2>
           <pre ng-non-bindable><code>
-      &lt;!doctype html&gt;
-      &lt;html ng-app&gt;
-        &lt;head&gt;
-          &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-          &lt;form&gt;
-            &lt;label&gt;Seu nome?&lt;/label&gt;
-            &lt;input type="text" ng-model="name" placeholder="Seu nome?"&gt;
-          &lt;/form&gt;
-          &lt;h3&gt;Meu nome é {{ name }}!&lt;/h3&gt;
-        &lt;/body&gt;
-      &lt;/html&gt;
+    &lt;!doctype html&gt;
+    &lt;html ng-app&gt;
+      &lt;head&gt;
+        &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;form&gt;
+          &lt;label&gt;Seu nome?&lt;/label&gt;
+          &lt;input type="text" ng-model="name" placeholder="Seu nome?"&gt;
+        &lt;/form&gt;
+        &lt;h3&gt;Meu nome é {{ name }}!&lt;/h3&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;
           </code></pre>
 
           <div class="hide-in-print mt fragment">
@@ -111,7 +111,7 @@
 
         <section>
           <h2>Model</h2>
-          <p>O modelo da aplicação é representado pelo objeto <span class="show-off">$scope</span>,<br/> ele que liga a <i>View</i> e o <i>Controller</i>.</p>
+          <p>O modelo da aplicação é representado pelo objeto <br/><span class="show-off">$scope</span>, que liga a <i>View</i> e o <i>Controller</i>.</p>
 
           <div class="fragment">
             <p class="mt">
@@ -224,7 +224,7 @@
 
         <section>
           <h2>Herança de <span class="show-off">$scope</span></h2>
-          <p>Quando você declarar um <i>controller</i> dentro de outro na sua <i>View</i> ,<br/>o <span class="show-off">$scope</span> do <i>controller</i> pai é herdado pelo <i>controller</i> filho.</p>
+          <p>O <span class="show-off">$scope</span> de um <i>controller</i><br>é herdado em um <i>controller</i> filho.</p>
           <div class="fragment">
             <p class="mt">MyControllers.js</p>
             <pre ng-non-bindable><code>
@@ -291,7 +291,7 @@
 
         <section>
           <h2>Services</h2>
-          <p>São objectos que executam tasks específicas e que são controlados pela injeção de depêndencias.</p>
+          <p>São objetos que executam tarefas específicas e que são controlados pela injeção de depêndencias.</p>
           <ul class="mt fragment">
             <li>$http (ajax)</li>
             <li>$locale</li>
@@ -303,7 +303,7 @@
         <section>
           <h2>$http</h2>
           <p>O <i>service</i> <span class="show-off">$http</span> facilita a comunicação com APIs.</p>
-          <p>Principais métodods: .get, .post, .put, .delete, .jsonp</p>
+          <p>Principais métodos: .get, .post, .put, .delete, .jsonp</p>
           <pre class="mt" ng-non-bindable><code>
     $http.get('http://endereco.da/api')
       .success(successCallback)
@@ -530,7 +530,7 @@
 
         <section>
           <h2>Testando seu App</h2>
-          <p>Um framework criado com o intuito de ser facilemnte testado</p>
+          <p>Um framework criado com o intuito de ser facilmente testado</p>
           <div class="fragment mt">
             <h4>Ferramentas recomendadas:</h4>
             <ul class="mt">
