@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>WebApps com AngularJS</title>
+		<title>WebApps with AngularJS</title>
 
-		<meta name="description" content="Desenolvendo WebApps com AngularJS">
+		<meta name="description" content="WebApps with AngularJS">
 		<meta name="author" content="Vitor Leal">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,48 +36,47 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Criando WebApps</h1>
-          <h3>Overview de desenvolvimento com <span class="show-off">AngularJS</span></h3>
+          <h1>WebApps with <span class="show-off">AngularJS</span></h1>
+          <h3>An overview of the framework</h3>
           <p>
             <img src="examples/assets/angularjs.png">
           </p>
 					<p>
 						<small>
-              <a href="http://vitorleal.com" target="_blank">Vitor Leal</a> - Telefonica Digital
+              <a href="http://vitorleal.com" target="_blank">Vitor Leal</a> - Telefonica Brazil
             </small>
 					</p>
 				</section>
 
         <section>
-          <h2>O que é o <span class="show-off">AngularJS</span></h2>
-          <p>Um framework para criar aplicações web dinâmicas, de maneira rápida, testável e de fácil manutenção.</p>
+          <h2>What is <span class="show-off">AngularJS</span></h2>
+          <p>It's a structural framework for dynamic web apps. that's are easy to maintain in a fast and testable way.</p>
         </section>
 
         <section>
-          <h2>Princípios do <span class="show-off">AngularJS</span></h2>
+          <h2><span class="show-off">AngularJS</span> principles</h2>
           <ul class="fragment">
-            <li>Desenvolvimento rápido</li>
-            <li>Escrever menos código</li>
-            <li>Modularidade</li>
-            <li>Pensado para ser testado</li>
+            <li>Rapid development</li>
+            <li>Modularity</li>
+            <li>Meant to be tested</li>
+            <li>Write less code</li>
           </ul>
         </section>
 
         <section>
-          <h2>O que o <span class="show-off">AngularJS</span> oferece</h2>
+          <h2>Wath <span class="show-off">AngularJS</span> offers us.</h2>
           <ul class="fragment">
             <li>Controllers</li>
             <li>Templates</li>
             <li>Two-Way data bindings</li>
             <li>Services</li>
             <li>Directives</li>
-            <li>Integração com REST</li>
-            <li>Injeção de dependências</li>
+            <li>Dependency Injection</li>
           </ul>
         </section>
 
         <section>
-          <h2>Um exemplo bem simples</h2>
+          <h2>The simplest example</h2>
           <pre ng-non-bindable><code>
     &lt;!doctype html&gt;
     &lt;html ng-app&gt;
@@ -422,10 +421,10 @@
 
         <section>
           <h2>Directives</h2>
-          <blockquote>"Ensine novos truques ao HTML"</blockquote>
+          <blockquote>"Teach new tricks to the HTML"</blockquote>
           <ol class="mt fragment">
-            <li>Crie atributos customizados para tags HTML</li>
-            <li>Crie tags HTML customizadas<br/><small>(baseado na especificação <i class="show-off">webcomponents</i> da W3C)</small></li>
+            <li>Create custom atribute to the HTML tag</li>
+            <li>Create custom HTML tag<br/><small>(based on W3C <i class="show-off">webcomponents</i> specification)</small></li>
           </ol>
 				</section>
 
@@ -445,7 +444,7 @@
 
         <section>
           <h2>Directives <small>3</small></h2>
-          <p>Exemplo de <i>directives</i> sendo utilizadas</p>
+          <p>How to use <i>directives</i></p>
           <pre ng-non-bindable class="mt"><code>
       &lt;!doctype html&gt;
       &lt;html ng-app="myApp"&gt;
@@ -468,16 +467,16 @@
           <p>Você pode criar sua própria <i>directive</i>.</p>
           <ul class="mt fragment">
             <li>
-              <strong>elemento</strong>: <span class="show-off">&lt;my-directive>&lt;/my-directive&gt;</span>
+              <strong>element</strong>: <span class="show-off">&lt;my-directive>&lt;/my-directive&gt;</span>
             </li>
             <li class="mt">
-              <strong>atributo</strong>: <span class="show-off">&lt;span my-directive="value"&gt;&lt;/span&gt;<span class="show-off">
+              <strong>atribute</strong>: <span class="show-off">&lt;span my-directive="value"&gt;&lt;/span&gt;<span class="show-off">
             </li>
             <li class="mt">
               <strong>class</strong>: <span class="show-off">&lt;span class="my-directive: value;"&gt;&lt;/span&gt;<span class="show-off">
             </li>
             <li class="mt">
-              <strong>comentário</strong>: <span class="show-off">&lt;!-- directive: my-directive value --&gt;<span class="show-off">
+              <strong>comment</strong>: <span class="show-off">&lt;!-- directive: my-directive value --&gt;<span class="show-off">
             </li>
           </ul>
 				</section>
@@ -498,9 +497,9 @@
           </code></pre>
 
           <pre ng-non-bindable><code>
-    &lt;my-directive&gt; &lt;/my-directive&gt;  <!-- Directive como um elemento -->
+    &lt;my-directive&gt; &lt;/my-directive&gt;  <!-- Directive as element -->
 
-    &lt;div my-directive&gt; &lt;/div&gt;       <!-- Directive como um atributo -->
+    &lt;div my-directive&gt; &lt;/div&gt;       <!-- Directive as atribute -->
           </code></pre>
         </section>
 
@@ -522,17 +521,17 @@
           </code></pre>
 
           <pre ng-non-bindable><code>
-    &lt;my-directive&gt; &lt;/my-directive&gt;             <!-- Nossa tag customizada -->
+    &lt;my-directive&gt; &lt;/my-directive&gt;             <!-- Custom tag -->
 
-    &lt;h1 class="title"&gt;Text from directive&lt;/h1&gt; <!-- Se converte no template -->
+    &lt;h1 class="title"&gt;Text from directive&lt;/h1&gt; <!-- Replaced by the template -->
           </code></pre>
         </section>
 
         <section>
-          <h2>Testando seu App</h2>
-          <p>Um framework criado com o intuito de ser facilmente testado</p>
+          <h2>Testing your App</h2>
+          <p>A framework to be easily tested</p>
           <div class="fragment mt">
-            <h4>Ferramentas recomendadas:</h4>
+            <h4>Tools:</h4>
             <ul class="mt">
               <li><span class="show-off">Karma</span> <small>Test runner</small></li>
               <li><span class="show-off">Jasmine</span> <small>Test framework</small></li>
@@ -541,7 +540,7 @@
         </section>
 
         <section>
-          <h2>Testando Controllers</h2>
+          <h2>Testing Controllers</h2>
           <pre ng-non-bindable><code>
   describe('Testing Controller', function () {
     var ctrl, scope;
@@ -561,7 +560,7 @@
         </section>
 
         <section>
-					<h2>Referências</h2>
+					<h2>References</h2>
           <ul>
             <li>Angular - <a href="http://angularjs.org/" target="_blank">http://angularjs.org/</a></li>
             <li>Karma   - <a href="http://karma-runner.github.io/" target="_blank">http://karma-runner.github.io/</a></li>
@@ -571,11 +570,10 @@
         </section>
 
         <section>
-					<h1>Fim</h1>
-          <!-- <img class="img" src="examples/assets/mustache.png"> -->
+					<h1>End</h1>
 					<p>
 						<small>
-              <a href="http://vitorleal.com" target="_blank">Vitor Leal</a> - Telefonica Digital
+              <a href="http://vitorleal.com" target="_blank">Vitor Leal</a> - Telefonica Brazil
             </small>
 					</p>
 				</section>
