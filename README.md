@@ -1,3 +1,3 @@
-# AngularJS Talk
+# AngularJS Talk (pt-BR)
 
-Developing WebApps with [AngularJS](http://angularjs.org/).
+Desenvovlendo Webapps com AgualrJS [AngularJS](http://angularjs.org/).
