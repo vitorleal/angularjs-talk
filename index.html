@@ -78,7 +78,7 @@
         <section>
           <h2>The simplest example</h2>
           <pre ng-non-bindable><code>
-    &lt;!doctype html&gt;
+    &lt;!DOCTYPE html&gt;
     &lt;html ng-app&gt;
       &lt;head&gt;
         &lt;script src="js/angular.min.js"&gt;&lt;/script&gt;
@@ -109,8 +109,8 @@
         </section>
 
         <section>
-          <h2>Model</h2>
-          <p>The model of the app is represented by the object <span class="show-off">$scope</span>, <br/> it connects the <strong>View</strong> and the <strong>Controller</strong></p>
+          <h2>$scope</h2>
+          <p><span class="show-off">$scope</span> is an object that refers to the application model.<br/> It connects the <strong>View</strong> and the <strong>Controller</strong></p>
 
           <div class="fragment">
             <p class="mt">
@@ -141,8 +141,8 @@
           <pre ng-non-bindable class="mt fragment"><code>
     function TodoCtrl($scope) {
       $scope.todos = [
-        { text: 'Learn AngularJS', done: true },
-        { text: 'Create an App', done: false }
+        { text: 'Learn AngularJS', done: true  },
+        { text: 'Create an App',   done: false }
       ];
 
       $scope.addTodo = function () {
@@ -154,8 +154,8 @@
 				</section>
 
         <section>
-          <h2>Views</h2>
-          <p>The views are simply <span class="show-off">HTML5</span>.<br/>
+          <h2>Templates</h2>
+          <p>The templates are simply <span class="show-off">HTML5</span>.<br/>
           All the presentation logic of the app must be in there.</p>
 
           <div class="fragment mt">
@@ -309,7 +309,7 @@
           <p>The <span class="show-off">$http</span> <i>service</i> makes easier to integration with external APIs.</p>
           <p>Main methods: .get, .post, .put, .delete, .jsonp</p>
           <pre class="mt" ng-non-bindable><code>
-    $http.get('http://endereco.da/api')
+    $http.get('http://address-of.the/api')
       .success(successCallback)
       .error(errorCallback);
 
