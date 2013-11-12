@@ -50,11 +50,11 @@
 
         <section>
           <h2>What is <span class="show-off">AngularJS</span></h2>
-          <p>It's a structural framework for dynamic web apps. that's are easy to maintain in a fast and testable way.</p>
+          <p>It's a structural framework for dynamic web apps<br/> that's easy to maintain, in a fast and testable way.</p>
         </section>
 
         <section>
-          <h2><span class="show-off">AngularJS</span> principles</h2>
+          <h2>The principles</h2>
           <ul class="fragment">
             <li>Rapid development</li>
             <li>Modularity</li>
@@ -64,7 +64,7 @@
         </section>
 
         <section>
-          <h2>Wath <span class="show-off">AngularJS</span> offers us.</h2>
+          <h2>Wath it offers us.</h2>
           <ul class="fragment">
             <li>Controllers</li>
             <li>Templates</li>
@@ -85,10 +85,10 @@
       &lt;/head&gt;
       &lt;body&gt;
         &lt;form&gt;
-          &lt;label&gt;Seu nome?&lt;/label&gt;
-          &lt;input type="text" ng-model="name" placeholder="Seu nome?"&gt;
+          &lt;label&gt;Your name?&lt;/label&gt;
+          &lt;input type="text" ng-model="name" placeholder="Your name?"&gt;
         &lt;/form&gt;
-        &lt;h3&gt;Meu nome é {{ name }}!&lt;/h3&gt;
+        &lt;h3&gt;My name is {{ name }}!&lt;/h3&gt;
       &lt;/body&gt;
     &lt;/html&gt;
           </code></pre>
@@ -99,10 +99,10 @@
             <html ng-app>
               <body class="mt">
                 <form>
-                  <label>Seu nome?</label>
-                  <input class="big-input" type="text" ng-model="name" placeholder="Escreva aqui!">
+                  <label>What's your name?</label>
+                  <input class="big-input" type="text" ng-model="name" placeholder="What's your name?">
                 </form>
-                <h3 class="mt">Meu nome é <span class="show-off">{{ name }}</span>!</h3>
+                <h3 class="mt">My name is <span class="show-off">{{ name }}</span>!</h3>
               </body>
             </html>
           </div>
@@ -110,7 +110,7 @@
 
         <section>
           <h2>Model</h2>
-          <p>O modelo da aplicação é representado pelo objeto <br/><span class="show-off">$scope</span>, que liga a <i>View</i> e o <i>Controller</i>.</p>
+          <p>The model of the app is represented by the object <span class="show-off">$scope</span>, <br/> it connects the <strong>View</strong> and the <strong>Controller</strong></p>
 
           <div class="fragment">
             <p class="mt">
@@ -135,12 +135,14 @@
 
         <section>
 					<h2>Controllers</h2>
-          <p>São funções usadas para "aumentar" a instância do <span class="show-off">$scope</span>. Adicionando um valor ou um comportamento a um objeto.</p>
+          <p>The controller is a function that augment the <span class="show-off">$scope</span> object.<br>
+          It's used to add a value or to add a behavior to the <span class="show-off">$scope</span>.</p>
+
           <pre ng-non-bindable class="mt fragment"><code>
     function TodoCtrl($scope) {
       $scope.todos = [
-        { text: 'Aprender AngularJS', done: true },
-        { text: 'Criar um novo App', done: false }
+        { text: 'Learn AngularJS', done: true },
+        { text: 'Create an App', done: false }
       ];
 
       $scope.addTodo = function () {
@@ -153,7 +155,8 @@
 
         <section>
           <h2>Views</h2>
-          <p>As views no angular são simplesmente <span class="show-off">HTML5</span>.<br/>É onde toda a <i>presentation logic</i> deve estar.</p>
+          <p>The views are simply <span class="show-off">HTML5</span>.<br/>
+          All the presentation logic of the app must be in there.</p>
 
           <div class="fragment mt">
             <pre ng-non-bindable><code>
@@ -174,7 +177,7 @@
 				</section>
 
         <section>
-          <h2>Resultado</h2>
+          <h2>Result</h2>
 
           <!doctype html>
           <html ng-app>
@@ -182,8 +185,8 @@
               <script>
                 function TodoCtrl($scope) {
                   $scope.todos = [
-                    { text: 'Aprender AngularJS', done: true },
-                    { text: 'Criar um novo App', done: false }
+                    { text: 'Learn AngularJS', done: true },
+                    { text: 'Create an App', done: false }
                   ];
 
                   $scope.addTodo = function () {
@@ -216,14 +219,15 @@
 
         <section>
           <h2>Two-Way data binding</h2>
-          <p>Data binding no angular funciona de maneira bi-direcional, qualquer alteração na <i>View</i> se reflete no <i>Model</i> e vice-versa.</p>
+          <p>Data-binding is the automatic synchronization <br>of data between the model and view.</p>
 				  <img class="fragment img" src="examples/assets/One_Way_Data_Binding.png">
 				  <img class="fragment img" src="examples/assets/Two_Way_Data_Binding.png">
         </section>
 
         <section>
-          <h2>Herança de <span class="show-off">$scope</span></h2>
-          <p>O <span class="show-off">$scope</span> de um <i>controller</i><br>é herdado em um <i>controller</i> filho.</p>
+          <h2><span class="show-off">$scope</span> inheritance</h2>
+          <p>When a new <span class="show-off">$scope</span> is created, it's added <br>as a children of their parent <span class="show-off">$scope</span>.</p>
+
           <div class="fragment">
             <p class="mt">MyControllers.js</p>
             <pre ng-non-bindable><code>
@@ -244,7 +248,7 @@
         </section>
 
         <section>
-          <h2>Herança de <span class="show-off">$scope</span> <small>2</small></h2>
+          <h2><span class="show-off">$scope</span> inheritance <small>2</small></h2>
           <p class="mt">MyView.html</p>
           <pre ng-non-bindable><code>
   &lt;div ng-controller="ParentController"&gt;
@@ -290,7 +294,20 @@
 
         <section>
           <h2>Services</h2>
-          <p>São objetos que executam tarefas específicas e que são controlados pela injeção de depêndencias.</p>
+          <p>Injctable objects that carry out specific tasks.<br> Provide a way to separate concerns and re-use code.</p>
+
+          <ul class="mt fragment">
+            <li>$http (ajax)</li>
+            <li>$locale</li>
+            <li>$timeout</li>
+            <li>$filter</li>
+          </ul>
+				</section>
+
+        <section>
+          <h2>Services</h2>
+          <p>Injctable objects that carry out specific tasks.<br> Provide a way to separate concerns and re-use code.</p>
+
           <ul class="mt fragment">
             <li>$http (ajax)</li>
             <li>$locale</li>
