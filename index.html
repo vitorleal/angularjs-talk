@@ -58,7 +58,7 @@
           <ul class="fragment">
             <li>Rapid development</li>
             <li>Modularity</li>
-            <li>Meant to be tested</li>
+            <li>Built to be testable</li>
             <li>Write less code</li>
           </ul>
         </section>
@@ -305,34 +305,22 @@
 				</section>
 
         <section>
-          <h2>Services</h2>
-          <p>Injctable objects that carry out specific tasks.<br> Provide a way to separate concerns and re-use code.</p>
-
-          <ul class="mt fragment">
-            <li>$http (ajax)</li>
-            <li>$locale</li>
-            <li>$timeout</li>
-            <li>$filter</li>
-          </ul>
-				</section>
-
-        <section>
           <h2>$http</h2>
-          <p>O <i>service</i> <span class="show-off">$http</span> facilita a comunicação com APIs.</p>
-          <p>Principais métodos: .get, .post, .put, .delete, .jsonp</p>
+          <p>The <span class="show-off">$http</span> <i>service</i> makes easier to integration with external APIs.</p>
+          <p>Main methods: .get, .post, .put, .delete, .jsonp</p>
           <pre class="mt" ng-non-bindable><code>
     $http.get('http://endereco.da/api')
       .success(successCallback)
       .error(errorCallback);
 
-    $http.post('http://endereco.da/api', data)
+    $http.post('http://address-of.the/api', data)
       .success(successCallback)
       .error(errorCallback);
           </code></pre>
 				</section>
 
         <section>
-          <h3>$http - exemplo</h3>
+          <h3>$http - example</h3>
           <pre ng-non-bindable><code>
     function BeerController($scope, $http) {
       $scope.makeRequest = function () {
@@ -359,7 +347,7 @@
 				</section>
 
         <section>
-          <h2>$http - Resultado</h2>
+          <h2>$http - Result</h2>
 
           <div class="mt">
             <!doctype html>
@@ -396,14 +384,14 @@
 
         <section>
           <h2>Modules</h2>
-          <p>No angular voce utiliza o <i class="show-off">"module"</i> para especificar <br>como um aplicativo deve ser inicializado.</p>
+          <p>Angular <span class="show-off">modules</span> declaratively specify <br>how an application should be bootstrapped.</p>
 
           <pre class="mt" ng-non-bindable><code>
     var app = angular.module('myApp', ['third-part-module']);
 
-    app.config(function () { ... });     <!-- Configurações -->
-    app.controller('myController', ...); <!-- Criando um controller -->
-    app.service('myService', ...);       <!-- Criando um service -->
+    app.config(function () { ... });     <!-- Configuration -->
+    app.controller('myController', ...); <!-- Create a controller -->
+    app.service('myService', ...);       <!-- Create a service -->
           </code></pre>
 
           <pre class="mt" ng-non-bindable><code>
@@ -414,8 +402,8 @@
 				</section>
 
         <section>
-					<h2>Routes</h2>
-          <p>Em apps mais complexos utilize o <i class="show-off">$routeProvider</i> do angular, para definir qual <i>controller</i> e <i>template</i> deve ser utilizdo para cada <i>path</i>.</p>
+					<h2>Routing</h2>
+          <p>In a more complex app you can use the <i class="show-off">$routeProvider</i> service, to define which <i>controller</i> and <i>template</i> will be loaded in each <i>path</i>.</p>
           <pre class="fragment" ng-non-bindable><code>
   var app = angular.module('myApp');
 
@@ -440,14 +428,14 @@
           <h2>Directives</h2>
           <blockquote>"Teach new tricks to the HTML"</blockquote>
           <ol class="mt fragment">
-            <li>Create custom atribute to the HTML tag</li>
-            <li>Create custom HTML tag<br/><small>(based on W3C <i class="show-off">webcomponents</i> specification)</small></li>
+            <li>Create custom attributes</li>
+            <li>Create custom HTML tags<br/><small>(based on W3C <i class="show-off">webcomponents</i> specification)</small></li>
           </ol>
 				</section>
 
         <section>
           <h2>Directives <small>2</small></h2>
-          <p>Todos os atributos que iniciam com <span class="show-off">"ng"</span> <br/>são <i>directives</i> criadas pelo Angular.</p>
+          <p>All the attributes that begin with <span class="show-off">"ng"</span> are AngularJS <span class="show-off">directives</span>.</p>
           <ul class="mt fragment">
             <li>ng-app</li>
             <li>ng-controller</li>
@@ -455,7 +443,7 @@
             <li>ng-repeat</li>
             <li>ng-click</li>
             <li>ng-view</li>
-            <li>entre muitas outras</li>
+            <li>...</li>
           </ul>
 				</section>
 
@@ -481,7 +469,7 @@
 
         <section>
           <h2>Directives <small>4</small></h2>
-          <p>Você pode criar sua própria <i>directive</i>.</p>
+          <p>You can also create you own <i>directive</i>.</p>
           <ul class="mt fragment">
             <li>
               <strong>element</strong>: <span class="show-off">&lt;my-directive>&lt;/my-directive&gt;</span>
@@ -516,7 +504,7 @@
           <pre ng-non-bindable><code>
     &lt;my-directive&gt; &lt;/my-directive&gt;  <!-- Directive as element -->
 
-    &lt;div my-directive&gt; &lt;/div&gt;       <!-- Directive as atribute -->
+    &lt;div my-directive&gt; &lt;/div&gt;       <!-- Directive as attribute -->
           </code></pre>
         </section>
 
@@ -557,7 +545,7 @@
         </section>
 
         <section>
-          <h2>Testing Controllers</h2>
+          <h2>Unit Test</h2>
           <pre ng-non-bindable><code>
   describe('Testing Controller', function () {
     var ctrl, scope;
@@ -577,6 +565,27 @@
         </section>
 
         <section>
+          <h2>End-to-end Tests</h2>
+          <pre ng-non-bindable><code>
+  describe('Grocery list', function () {
+    beforeEach(function () {
+      browser().navigateTo('/');
+    });
+
+    it('filters the grocery list based on the search query', function() {
+      expect(repeater('.groceries li').count()).toBe(5);
+
+      input('query').enter('b');
+      expect(repeater('.groceries li').count()).toBe(3);
+
+      input('query').enter('blueberry');
+      expect(repeater('.groceries li').count()).toBe(1);
+    });
+  });
+          </code></pre>
+        </section>
+
+        <section>
 					<h2>References</h2>
           <ul>
             <li>Angular - <a href="http://angularjs.org/" target="_blank">http://angularjs.org/</a></li>
@@ -587,7 +596,7 @@
         </section>
 
         <section>
-					<h1>End</h1>
+					<h1>The End</h1>
 					<p>
 						<small>
               <a href="http://vitorleal.com" target="_blank">Vitor Leal</a> - Telefonica Brazil
